@@ -1,2 +1,7 @@
-# controle_estoque
-Projeto de aplicativo mobile para a matéria de gerenciamento de projetos. Feito com o FlutterFlow.
+# controleEstoque
+
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.
