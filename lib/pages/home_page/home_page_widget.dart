@@ -40,16 +40,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF222222),
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: Color(0xFFE7C803),
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            'Home',
+            textAlign: TextAlign.start,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 22.0,
+                  fontWeight: FontWeight.w600,
                 ),
           ),
           actions: [],
