@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="controleEstoque"
+        android:label="Le Pain Rustique"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
