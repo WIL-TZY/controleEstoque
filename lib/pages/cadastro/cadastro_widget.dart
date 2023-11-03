@@ -30,8 +30,10 @@ class _CadastroWidgetState extends State<CadastroWidget> {
 
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
+
     _model.passwordController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
+
     _model.passwordConfirmController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
   }
