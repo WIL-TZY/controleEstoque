@@ -1,13 +1,20 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/addproduto/addproduto_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'home_page_widget.dart' show HomePageWidget;
+import 'produtos_widget.dart' show ProdutosWidget;
+import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+class ProdutosModel extends FlutterFlowModel<ProdutosWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
