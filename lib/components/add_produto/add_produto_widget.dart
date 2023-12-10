@@ -136,22 +136,22 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primary,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(100.0),
