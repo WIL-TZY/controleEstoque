@@ -3,16 +3,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'cadastro_model.dart';
 export 'cadastro_model.dart';
 
 class CadastroWidget extends StatefulWidget {
-  const CadastroWidget({Key? key}) : super(key: key);
+  const CadastroWidget({super.key});
 
   @override
   _CadastroWidgetState createState() => _CadastroWidgetState();
@@ -62,7 +59,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF221D1A),
+        backgroundColor: const Color(0xFF221D1A),
         body: SafeArea(
           top: true,
           child: Row(
@@ -77,13 +74,13 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: const AlignmentDirectional(0.00, -1.00),
                       image: Image.asset(
                         'assets/images/overlay.png',
                       ).image,
                     ),
                   ),
-                  alignment: AlignmentDirectional(0.00, -1.00),
+                  alignment: const AlignmentDirectional(0.00, -1.00),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -99,7 +96,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               32.0, 32.0, 32.0, 32.0),
                           child: Container(
                             width: 335.0,
@@ -110,13 +107,13 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                               borderRadius: BorderRadius.circular(32.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 20.0, 20.0, 20.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 14.0),
                                     child: Text(
                                       'Crie sua conta',
@@ -125,9 +122,9 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 370.0,
                                       child: TextFormField(
                                         controller:
@@ -135,7 +132,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                         focusNode: _model.emailAddressFocusNode,
                                         onFieldSubmitted: (_) async {},
                                         autofocus: true,
-                                        autofillHints: [AutofillHints.email],
+                                        autofillHints: const [AutofillHints.email],
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Email',
@@ -199,15 +196,15 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 370.0,
                                       child: TextFormField(
                                         controller: _model.passwordController,
                                         focusNode: _model.passwordFocusNode,
                                         autofocus: true,
-                                        autofillHints: [AutofillHints.password],
+                                        autofillHints: const [AutofillHints.password],
                                         obscureText: !_model.passwordVisibility,
                                         decoration: InputDecoration(
                                           labelText: 'Senha',
@@ -287,9 +284,9 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 370.0,
                                       child: TextFormField(
                                         controller:
@@ -297,7 +294,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                         focusNode:
                                             _model.passwordConfirmFocusNode,
                                         autofocus: true,
-                                        autofillHints: [AutofillHints.password],
+                                        autofillHints: const [AutofillHints.password],
                                         obscureText:
                                             !_model.passwordConfirmVisibility,
                                         decoration: InputDecoration(
@@ -381,7 +378,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -391,7 +388,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                                 .text) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            SnackBar(
+                                            const SnackBar(
                                               content: Text(
                                                 'Passwords don\'t match!',
                                               ),
@@ -417,12 +414,12 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                       options: FFButtonOptions(
                                         width: 370.0,
                                         height: 44.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: Color(0xFFF2BF19),
+                                        color: const Color(0xFFF2BF19),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -430,7 +427,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                               color: Colors.white,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -442,7 +439,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
 
                                   // You will have to add an action on this rich text to go to your login page.
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 12.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -457,7 +454,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                             .textScaleFactor,
                                         text: TextSpan(
                                           children: [
-                                            TextSpan(
+                                            const TextSpan(
                                               text: 'Já tem uma conta? ',
                                               style: TextStyle(),
                                             ),
@@ -501,13 +498,13 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                   flex: 6,
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: Container(
                       width: 100.0,
                       height: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           fit: BoxFit.cover,
                           image: CachedNetworkImageProvider(
                             'https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1380&q=80',

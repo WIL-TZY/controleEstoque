@@ -1,22 +1,17 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/addproduto/addproduto_widget.dart';
+import '/components/add_produto/add_produto_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'produtos_model.dart';
 export 'produtos_model.dart';
 
 class ProdutosWidget extends StatefulWidget {
-  const ProdutosWidget({Key? key}) : super(key: key);
+  const ProdutosWidget({super.key});
 
   @override
   _ProdutosWidgetState createState() => _ProdutosWidgetState();
@@ -57,11 +52,11 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF221D1A),
+        backgroundColor: const Color(0xFF221D1A),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -105,7 +100,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                             borderRadius: BorderRadius.circular(100.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 8.0, 24.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -130,7 +125,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                                   },
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     listviewNaoCompradosProdutosRecord.produto,
@@ -190,7 +185,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                             borderRadius: BorderRadius.circular(100.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 8.0, 24.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -216,7 +211,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                                   },
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     listviewCompradosProdutosRecord.produto,
@@ -238,15 +233,15 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                   },
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 400.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 400.0, 0.0, 0.0),
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: const AlignmentDirectional(0.00, 0.00),
                         child: Container(
                           width: 80.0,
                           height: 80.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFFF2BF19),
                             boxShadow: [
                               BoxShadow(
@@ -266,13 +261,13 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 await showAlignedDialog(
-                                  barrierColor: Color(0x4D000000),
+                                  barrierColor: const Color(0x4D000000),
                                   context: context,
                                   isGlobal: true,
                                   avoidOverflow: false,
-                                  targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                  targetAnchor: const AlignmentDirectional(0.0, 0.0)
                                       .resolve(Directionality.of(context)),
-                                  followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                  followerAnchor: const AlignmentDirectional(0.0, 0.0)
                                       .resolve(Directionality.of(context)),
                                   builder: (dialogContext) {
                                     return Material(
@@ -284,13 +279,13 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                                                 .requestFocus(
                                                     _model.unfocusNode)
                                             : FocusScope.of(context).unfocus(),
-                                        child: AddprodutoWidget(),
+                                        child: const AddProdutoWidget(),
                                       ),
                                     );
                                   },
                                 ).then((value) => setState(() {}));
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.add_shopping_cart_rounded,
                                 color: Colors.white,
                                 size: 28.0,
