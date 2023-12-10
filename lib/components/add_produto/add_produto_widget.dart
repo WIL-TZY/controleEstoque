@@ -28,8 +28,11 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
     super.initState();
     _model = createModel(context, () => AddProdutoModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
+    _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
   }
 
   @override
@@ -44,11 +47,11 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
     return Align(
       alignment: const AlignmentDirectional(0.00, 0.00),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
         child: Container(
           constraints: const BoxConstraints(
             maxWidth: 570.0,
-            maxHeight: 260.0,
+            maxHeight: 370.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -105,21 +108,26 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                   child: TextFormField(
-                    controller: _model.textController,
-                    focusNode: _model.textFieldFocusNode,
+                    controller: _model.textController1,
+                    focusNode: _model.textFieldFocusNode1,
                     autofocus: true,
+                    textCapitalization: TextCapitalization.sentences,
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: 'Nome do produto',
+                      labelStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                fontFamily: 'Poppins',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w500,
+                              ),
                       hintText: 'Insira o nome do produto',
-                      hintStyle: FlutterFlowTheme.of(context)
-                          .bodySmall
-                          .override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelSmall.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w500,
+                              ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).accent3,
@@ -148,22 +156,117 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                         ),
                         borderRadius: BorderRadius.circular(100.0),
                       ),
-                      contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      prefixIcon: const Icon(
+                        Icons.production_quantity_limits,
+                      ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).primaryText,
                         ),
                     validator:
-                        _model.textControllerValidator.asValidator(context),
+                        _model.textController1Validator.asValidator(context),
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                  child: TextFormField(
+                    controller: _model.textController2,
+                    focusNode: _model.textFieldFocusNode2,
+                    autofocus: true,
+                    textCapitalization: TextCapitalization.none,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'Quantidade',
+                      labelStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500,
+                              ),
+                      hintText: 'Insira a quantidade do produto',
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelSmall.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).accent3,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.numbers,
+                      ),
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                        ),
+                    keyboardType: TextInputType.number,
+                    validator:
+                        _model.textController2Validator.asValidator(context),
+                  ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Theme(
+                      data: ThemeData(
+                        checkboxTheme: CheckboxThemeData(
+                          visualDensity: VisualDensity.compact,
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                        ),
+                        unselectedWidgetColor:
+                            FlutterFlowTheme.of(context).secondaryText,
+                      ),
+                      child: Checkbox(
+                        value: _model.checkboxValue ??= true,
+                        onChanged: (newValue) async {
+                          setState(() => _model.checkboxValue = newValue!);
+                        },
+                        activeColor: FlutterFlowTheme.of(context).primary,
+                        checkColor: FlutterFlowTheme.of(context).info,
+                      ),
+                    ),
+                    Text(
+                      'Em estoque?',
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
@@ -203,8 +306,10 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                           await ProdutosRecord.collection
                               .doc()
                               .set(createProdutosRecordData(
-                                produto: _model.textController.text,
-                                emestoque: false,
+                                produto: _model.textController1.text,
+                                emestoque: _model.checkboxValue,
+                                quantidade:
+                                    int.tryParse(_model.textController2.text),
                               ));
                           Navigator.pop(context);
                         },
