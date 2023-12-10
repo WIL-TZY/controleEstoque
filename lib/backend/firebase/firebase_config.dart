@@ -4,13 +4,13 @@ import 'package:flutter/foundation.dart';
 Future initFirebase() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
-        options: FirebaseOptions(
-            apiKey: "AIzaSyCYLesvO8DGtji6tEryqSsMw3QJNxXK7PU",
-            authDomain: "controleestoque-78069.firebaseapp.com",
-            projectId: "controleestoque-78069",
-            storageBucket: "controleestoque-78069.appspot.com",
-            messagingSenderId: "702279701742",
-            appId: "1:702279701742:web:76f4b8df69f9b041a40fff"));
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyBKxIw5z8QO0LIssBQfS4CyzCqdK2j4T_Q",
+            authDomain: "controleestoque-22f57.firebaseapp.com",
+            projectId: "controleestoque-22f57",
+            storageBucket: "controleestoque-22f57.appspot.com",
+            messagingSenderId: "98135079316",
+            appId: "1:98135079316:web:487e3a6a285f3bfe69b781"));
   } else {
     await Firebase.initializeApp();
   }

@@ -1,4 +1,4 @@
-package com.mycompany.controleestoque
+package com.undf.controleestoque
 
 import io.flutter.embedding.android.FlutterActivity
 

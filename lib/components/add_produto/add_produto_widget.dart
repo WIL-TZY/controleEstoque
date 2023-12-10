@@ -1,26 +1,21 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'addproduto_model.dart';
-export 'addproduto_model.dart';
+import 'add_produto_model.dart';
+export 'add_produto_model.dart';
 
-class AddprodutoWidget extends StatefulWidget {
-  const AddprodutoWidget({Key? key}) : super(key: key);
+class AddProdutoWidget extends StatefulWidget {
+  const AddProdutoWidget({super.key});
 
   @override
-  _AddprodutoWidgetState createState() => _AddprodutoWidgetState();
+  _AddProdutoWidgetState createState() => _AddProdutoWidgetState();
 }
 
-class _AddprodutoWidgetState extends State<AddprodutoWidget> {
-  late AddprodutoModel _model;
+class _AddProdutoWidgetState extends State<AddProdutoWidget> {
+  late AddProdutoModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,7 +26,7 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddprodutoModel());
+    _model = createModel(context, () => AddProdutoModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -47,11 +42,11 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: const AlignmentDirectional(0.00, 0.00),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
         child: Container(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 570.0,
             maxHeight: 260.0,
           ),
@@ -59,11 +54,11 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
             color: FlutterFlowTheme.of(context).secondaryBackground,
             borderRadius: BorderRadius.circular(12.0),
             border: Border.all(
-              color: Color(0xFFE0E3E7),
+              color: const Color(0xFFE0E3E7),
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +69,7 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                         child: Text(
                           'Adicionar Produto',
                           style: FlutterFlowTheme.of(context)
@@ -108,7 +103,7 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
@@ -133,28 +128,28 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       contentPadding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
@@ -165,7 +160,7 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -178,9 +173,9 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
                         options: FFButtonOptions(
                           width: 120.0,
                           height: 44.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
@@ -217,11 +212,11 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 44.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFFF2BF19),
+                          color: const Color(0xFFF2BF19),
                           textStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
@@ -229,12 +224,12 @@ class _AddprodutoWidgetState extends State<AddprodutoWidget> {
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 3.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(100.0),
-                          hoverColor: Color(0xFF2B16ED),
+                          hoverColor: const Color(0xFF2B16ED),
                           hoverTextColor: Colors.white,
                         ),
                       ),
