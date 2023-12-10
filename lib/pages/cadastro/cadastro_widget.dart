@@ -408,7 +408,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                         }
 
                                         context.goNamedAuth(
-                                            'login', context.mounted);
+                                            'produtos', context.mounted);
                                       },
                                       text: 'Criar conta',
                                       options: FFButtonOptions(

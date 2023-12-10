@@ -72,13 +72,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const LoginWidget() : const CadastroWidget(),
+          appStateNotifier.loggedIn ? const ProdutosWidget() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const LoginWidget() : const CadastroWidget(),
+              appStateNotifier.loggedIn ? const ProdutosWidget() : const LoginWidget(),
         ),
         FFRoute(
           name: 'cadastro',
@@ -260,7 +260,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/cadastro';
+            return '/login';
           }
           return null;
         },

@@ -25,9 +25,15 @@ class ProdutosRecord extends FirestoreRecord {
   bool get emestoque => _emestoque ?? false;
   bool hasEmestoque() => _emestoque != null;
 
+  // "quantidade" field.
+  int? _quantidade;
+  int get quantidade => _quantidade ?? 0;
+  bool hasQuantidade() => _quantidade != null;
+
   void _initializeFields() {
     _produto = snapshotData['produto'] as String?;
     _emestoque = snapshotData['emestoque'] as bool?;
+    _quantidade = castToType<int>(snapshotData['quantidade']);
   }
 
   static CollectionReference get collection =>
@@ -67,11 +73,13 @@ class ProdutosRecord extends FirestoreRecord {
 Map<String, dynamic> createProdutosRecordData({
   String? produto,
   bool? emestoque,
+  int? quantidade,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'produto': produto,
       'emestoque': emestoque,
+      'quantidade': quantidade,
     }.withoutNulls,
   );
 
@@ -83,12 +91,14 @@ class ProdutosRecordDocumentEquality implements Equality<ProdutosRecord> {
 
   @override
   bool equals(ProdutosRecord? e1, ProdutosRecord? e2) {
-    return e1?.produto == e2?.produto && e1?.emestoque == e2?.emestoque;
+    return e1?.produto == e2?.produto &&
+        e1?.emestoque == e2?.emestoque &&
+        e1?.quantidade == e2?.quantidade;
   }
 
   @override
   int hash(ProdutosRecord? e) =>
-      const ListEquality().hash([e?.produto, e?.emestoque]);
+      const ListEquality().hash([e?.produto, e?.emestoque, e?.quantidade]);
 
   @override
   bool isValidKey(Object? o) => o is ProdutosRecord;
