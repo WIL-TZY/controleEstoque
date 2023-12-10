@@ -57,7 +57,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: Color(0xFF221D1A),
         body: SafeArea(
           top: true,
           child: Padding(
@@ -200,6 +200,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                                   borderRadius: 30.0,
                                   borderWidth: 1.0,
                                   buttonSize: 40.0,
+                                  fillColor: Colors.white,
                                   icon: FaIcon(
                                     FontAwesomeIcons.solidCheckCircle,
                                     color: FlutterFlowTheme.of(context)
@@ -223,8 +224,7 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Colors.white,
                                           fontSize: 15.0,
                                         ),
                                   ),

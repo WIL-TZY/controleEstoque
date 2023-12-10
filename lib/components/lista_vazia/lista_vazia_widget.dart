@@ -67,7 +67,7 @@ class _ListaVaziaWidgetState extends State<ListaVaziaWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
             child: Text(
-              'Cadastre um produto para começar a usar o Renamarket.',
+              'Cadastre um produto para poder editá-lo.',
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Poppins',

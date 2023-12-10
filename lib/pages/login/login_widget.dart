@@ -72,7 +72,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     color: Color(0xFF221D1A),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      alignment: AlignmentDirectional(1.00, -1.00),
+                      alignment: AlignmentDirectional(0.00, 0.00),
                       image: Image.asset(
                         'assets/images/overlay.png',
                       ).image,
@@ -224,7 +224,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           obscureText:
                                               !_model.passwordVisibility,
                                           decoration: InputDecoration(
-                                            labelText: 'senha',
+                                            labelText: 'Senha',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium,
@@ -308,7 +308,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         onPressed: () async {
                                           context.pushNamed('produtos');
                                         },
-                                        text: 'entrar',
+                                        text: 'Entrar',
                                         options: FFButtonOptions(
                                           width: 370.0,
                                           height: 44.0,
