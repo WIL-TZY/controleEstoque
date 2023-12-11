@@ -115,6 +115,26 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        Align(
+                          alignment: const AlignmentDirectional(1.00, 0.00),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            borderWidth: 1.0,
+                            buttonSize: 60.0,
+                            hoverColor: FlutterFlowTheme.of(context).alternate,
+                            hoverIconColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                            icon: const Icon(
+                              Icons.login,
+                              color: Colors.white,
+                              size: 30.0,
+                            ),
+                            onPressed: () async {
+                              context.pushNamed('teste');
+                            },
+                          ),
+                        ),
                         SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -341,56 +361,63 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                             ],
                           ),
                         ),
-                        Container(
-                          width: 80.0,
-                          height: 80.0,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFFFBC01),
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 12.0,
-                                color: Color(0xFF76541A),
-                                offset: Offset(0.0, 2.0),
-                              )
-                            ],
-                            shape: BoxShape.circle,
-                          ),
-                          child: Builder(
-                            builder: (context) => InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                await showAlignedDialog(
-                                  barrierColor: const Color(0x3314181B),
-                                  context: context,
-                                  isGlobal: true,
-                                  avoidOverflow: false,
-                                  targetAnchor: const AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  followerAnchor: const AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  builder: (dialogContext) {
-                                    return Material(
-                                      color: Colors.transparent,
-                                      child: GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: const AddProdutoWidget(),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => setState(() {}));
-                              },
-                              child: Icon(
-                                Icons.add_shopping_cart_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 50.0,
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 32.0, 0.0, 0.0),
+                          child: Container(
+                            width: 80.0,
+                            height: 80.0,
+                            decoration: const BoxDecoration(
+                              color: Color(0xFFFFBC01),
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 12.0,
+                                  color: Color(0xFF76541A),
+                                  offset: Offset(0.0, 2.0),
+                                )
+                              ],
+                              shape: BoxShape.circle,
+                            ),
+                            child: Builder(
+                              builder: (context) => InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await showAlignedDialog(
+                                    barrierColor: const Color(0x3314181B),
+                                    context: context,
+                                    isGlobal: true,
+                                    avoidOverflow: false,
+                                    targetAnchor: const AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    followerAnchor: const AlignmentDirectional(
+                                            0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    builder: (dialogContext) {
+                                      return Material(
+                                        color: Colors.transparent,
+                                        child: GestureDetector(
+                                          onTap: () => _model
+                                                  .unfocusNode.canRequestFocus
+                                              ? FocusScope.of(context)
+                                                  .requestFocus(
+                                                      _model.unfocusNode)
+                                              : FocusScope.of(context)
+                                                  .unfocus(),
+                                          child: const AddProdutoWidget(),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                },
+                                child: Icon(
+                                  Icons.add_shopping_cart_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 50.0,
+                                ),
                               ),
                             ),
                           ),

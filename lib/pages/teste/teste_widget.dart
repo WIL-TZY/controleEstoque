@@ -85,8 +85,8 @@ class _TesteWidgetState extends State<TesteWidget> {
                   color: Color(0xFF57636C),
                   size: 24.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  context.pushNamed('produtos');
                 },
               ),
             ),
