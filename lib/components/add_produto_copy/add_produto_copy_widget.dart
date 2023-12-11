@@ -4,18 +4,23 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'add_produto_model.dart';
-export 'add_produto_model.dart';
+import 'add_produto_copy_model.dart';
+export 'add_produto_copy_model.dart';
 
-class AddProdutoWidget extends StatefulWidget {
-  const AddProdutoWidget({super.key});
+class AddProdutoCopyWidget extends StatefulWidget {
+  const AddProdutoCopyWidget({
+    super.key,
+    required this.doctarefa,
+  });
+
+  final ProdutosRecord? doctarefa;
 
   @override
-  _AddProdutoWidgetState createState() => _AddProdutoWidgetState();
+  _AddProdutoCopyWidgetState createState() => _AddProdutoCopyWidgetState();
 }
 
-class _AddProdutoWidgetState extends State<AddProdutoWidget> {
-  late AddProdutoModel _model;
+class _AddProdutoCopyWidgetState extends State<AddProdutoCopyWidget> {
+  late AddProdutoCopyModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -26,7 +31,7 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddProdutoModel());
+    _model = createModel(context, () => AddProdutoCopyModel());
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -74,7 +79,7 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                         child: Text(
-                          'Adicionar Produto',
+                          'Editar Produto',
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .override(
