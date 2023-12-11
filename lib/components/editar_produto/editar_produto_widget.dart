@@ -4,11 +4,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'add_produto_copy_model.dart';
-export 'add_produto_copy_model.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
+import 'editar_produto_model.dart';
+export 'editar_produto_model.dart';
 
-class AddProdutoCopyWidget extends StatefulWidget {
-  const AddProdutoCopyWidget({
+class EditarProdutoWidget extends StatefulWidget {
+  const EditarProdutoWidget({
     super.key,
     required this.doctarefa,
   });
@@ -16,11 +18,11 @@ class AddProdutoCopyWidget extends StatefulWidget {
   final ProdutosRecord? doctarefa;
 
   @override
-  _AddProdutoCopyWidgetState createState() => _AddProdutoCopyWidgetState();
+  _EditarProdutoWidgetState createState() => _EditarProdutoWidgetState();
 }
 
-class _AddProdutoCopyWidgetState extends State<AddProdutoCopyWidget> {
-  late AddProdutoCopyModel _model;
+class _EditarProdutoWidgetState extends State<EditarProdutoWidget> {
+  late EditarProdutoModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,12 +33,21 @@ class _AddProdutoCopyWidgetState extends State<AddProdutoCopyWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddProdutoCopyModel());
+    _model = createModel(context, () => EditarProdutoModel());
 
-    _model.textController1 ??= TextEditingController();
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.letProduto = widget.doctarefa!.produto;
+        _model.letQuantidade = widget.doctarefa?.quantidade;
+      });
+    });
+
+    _model.textController1 ??= TextEditingController(text: _model.letProduto);
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
+    _model.textController2 ??=
+        TextEditingController(text: _model.letQuantidade?.toString());
     _model.textFieldFocusNode2 ??= FocusNode();
   }
 
@@ -49,6 +60,8 @@ class _AddProdutoCopyWidgetState extends State<AddProdutoCopyWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: const AlignmentDirectional(0.00, 0.00),
       child: Padding(
@@ -115,6 +128,11 @@ class _AddProdutoCopyWidgetState extends State<AddProdutoCopyWidget> {
                   child: TextFormField(
                     controller: _model.textController1,
                     focusNode: _model.textFieldFocusNode1,
+                    onFieldSubmitted: (_) async {
+                      setState(() {
+                        _model.letProduto = widget.doctarefa!.produto;
+                      });
+                    },
                     autofocus: true,
                     textCapitalization: TextCapitalization.sentences,
                     obscureText: false,
@@ -178,6 +196,11 @@ class _AddProdutoCopyWidgetState extends State<AddProdutoCopyWidget> {
                   child: TextFormField(
                     controller: _model.textController2,
                     focusNode: _model.textFieldFocusNode2,
+                    onFieldSubmitted: (_) async {
+                      setState(() {
+                        _model.letQuantidade = widget.doctarefa?.quantidade;
+                      });
+                    },
                     autofocus: true,
                     textCapitalization: TextCapitalization.none,
                     obscureText: false,
@@ -308,16 +331,14 @@ class _AddProdutoCopyWidgetState extends State<AddProdutoCopyWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          await ProdutosRecord.collection
-                              .doc()
-                              .set(createProdutosRecordData(
-                                produto: _model.textController1.text,
-                                quantidade:
-                                    int.tryParse(_model.textController2.text),
-                              ));
-                          Navigator.pop(context);
+                          await widget.doctarefa!.reference
+                              .update(createProdutosRecordData(
+                            produto: _model.textController1.text,
+                            quantidade:
+                                int.tryParse(_model.textController2.text),
+                          ));
                         },
-                        text: 'Criar produto',
+                        text: 'Editar  produto',
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 44.0,

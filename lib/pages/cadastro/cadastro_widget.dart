@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'cadastro_model.dart';
 export 'cadastro_model.dart';
 
@@ -52,6 +53,8 @@ class _CadastroWidgetState extends State<CadastroWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus

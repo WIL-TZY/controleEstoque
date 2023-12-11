@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'add_produto_model.dart';
 export 'add_produto_model.dart';
 
@@ -44,6 +45,8 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: const AlignmentDirectional(0.00, 0.00),
       child: Padding(

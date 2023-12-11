@@ -1,8 +1,14 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'add_produto_copy_widget.dart' show AddProdutoCopyWidget;
+import 'editar_produto_widget.dart' show EditarProdutoWidget;
 import 'package:flutter/material.dart';
 
-class AddProdutoCopyModel extends FlutterFlowModel<AddProdutoCopyWidget> {
+class EditarProdutoModel extends FlutterFlowModel<EditarProdutoWidget> {
+  ///  Local state fields for this component.
+
+  String letProduto = '';
+
+  int? letQuantidade;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.

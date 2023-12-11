@@ -1,12 +1,13 @@
 import '/backend/backend.dart';
 import '/components/add_produto/add_produto_widget.dart';
+import '/components/editar_produto/editar_produto_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'teste_model.dart';
 export 'teste_model.dart';
 
@@ -45,6 +46,8 @@ class _TesteWidgetState extends State<TesteWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -233,38 +236,83 @@ class _TesteWidgetState extends State<TesteWidget> {
                                           ),
                                         ),
                                       ),
-                                      Theme(
-                                        data: ThemeData(
-                                          checkboxTheme: CheckboxThemeData(
-                                            visualDensity:
-                                                VisualDensity.compact,
-                                            materialTapTargetSize:
-                                                MaterialTapTargetSize
-                                                    .shrinkWrap,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(4.0),
+                                      Builder(
+                                        builder: (context) => Theme(
+                                          data: ThemeData(
+                                            checkboxTheme: CheckboxThemeData(
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              materialTapTargetSize:
+                                                  MaterialTapTargetSize
+                                                      .shrinkWrap,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.0),
+                                              ),
                                             ),
+                                            unselectedWidgetColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryText,
                                           ),
-                                          unselectedWidgetColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                        ),
-                                        child: Checkbox(
-                                          value: _model.checkboxValueMap[
-                                                  listviewSemEstoqueProdutosRecord] ??=
-                                              true,
-                                          onChanged: (newValue) async {
-                                            setState(() => _model
-                                                        .checkboxValueMap[
-                                                    listviewSemEstoqueProdutosRecord] =
-                                                newValue!);
-                                          },
-                                          activeColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .tertiary,
-                                          checkColor:
-                                              FlutterFlowTheme.of(context).info,
+                                          child: Checkbox(
+                                            value: _model.checkboxValueMap[
+                                                    listviewSemEstoqueProdutosRecord] ??=
+                                                true,
+                                            onChanged: (newValue) async {
+                                              setState(() => _model
+                                                          .checkboxValueMap[
+                                                      listviewSemEstoqueProdutosRecord] =
+                                                  newValue!);
+                                              if (newValue!) {
+                                                await showAlignedDialog(
+                                                  context: context,
+                                                  isGlobal: true,
+                                                  avoidOverflow: false,
+                                                  targetAnchor:
+                                                      const AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  followerAnchor:
+                                                      const AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  builder: (dialogContext) {
+                                                    return Material(
+                                                      color: Colors.transparent,
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child:
+                                                            EditarProdutoWidget(
+                                                          doctarefa:
+                                                              listviewSemEstoqueProdutosRecord,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+                                              }
+                                            },
+                                            activeColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .tertiary,
+                                            checkColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .info,
+                                          ),
                                         ),
                                       ),
                                       InkWell(
@@ -345,34 +393,6 @@ class _TesteWidgetState extends State<TesteWidget> {
                             },
                           );
                         },
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(0.00, 1.00),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: 'editar',
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).success,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                ),
-                        elevation: 3.0,
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),
