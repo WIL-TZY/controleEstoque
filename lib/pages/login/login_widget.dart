@@ -73,7 +73,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     color: const Color(0xFF221D1A),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      alignment: const AlignmentDirectional(0.00, 0.00),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       image: Image.asset(
                         'assets/images/overlay.png',
                       ).image,
@@ -82,23 +82,39 @@ class _LoginWidgetState extends State<LoginWidget> {
                       color: const Color(0xFF221D1A),
                     ),
                   ),
-                  alignment: const AlignmentDirectional(0.00, -1.00),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Align(
-                    alignment: const AlignmentDirectional(0.00, -1.00),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            width: double.infinity,
-                            height: 140.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0x00FFFFFF),
-                              borderRadius: BorderRadius.circular(0.0),
-                            ),
-                            alignment: const AlignmentDirectional(-1.00, 0.00),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0,
+                                60.0,
+                                0.0,
+                                valueOrDefault<double>(
+                                  () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall) {
+                                      return 30.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointMedium) {
+                                      return 40.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointLarge) {
+                                      return 90.0;
+                                    } else {
+                                      return 40.0;
+                                    }
+                                  }(),
+                                  40.0,
+                                )),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(0.0),
                               child: Image.asset(
@@ -110,8 +126,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                32.0, 32.0, 32.0, 32.0),
+                            padding: const EdgeInsets.all(32.0),
                             child: Container(
                               width: 335.0,
                               height: 334.0,
@@ -122,8 +137,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 shape: BoxShape.rectangle,
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 20.0, 20.0, 20.0),
+                                padding: const EdgeInsets.all(20.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -407,32 +421,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                 ),
               ),
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-              ))
-                Expanded(
-                  flex: 6,
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-                    child: Container(
-                      width: 100.0,
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: Image.network(
-                            'https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1380&q=80',
-                          ).image,
-                        ),
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                    ),
-                  ),
-                ),
             ],
           ),
         ),

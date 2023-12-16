@@ -72,9 +72,9 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                 buttonSize: 60.0,
                 hoverColor: FlutterFlowTheme.of(context).alternate,
                 hoverIconColor: FlutterFlowTheme.of(context).primaryText,
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back,
-                  color: Colors.white,
+                  color: FlutterFlowTheme.of(context).primaryText,
                   size: 30.0,
                 ),
                 onPressed: () async {
@@ -119,22 +119,23 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(1.00, 0.00),
+                          alignment: const AlignmentDirectional(1.0, 0.0),
                           child: FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
                             borderRadius: 30.0,
                             borderWidth: 1.0,
                             buttonSize: 60.0,
-                            hoverColor: FlutterFlowTheme.of(context).alternate,
+                            fillColor: FlutterFlowTheme.of(context).alternate,
+                            hoverColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             hoverIconColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                            icon: const Icon(
+                                FlutterFlowTheme.of(context).alternate,
+                            icon: Icon(
                               Icons.login,
-                              color: Colors.white,
+                              color: FlutterFlowTheme.of(context).primaryText,
                               size: 30.0,
                             ),
                             onPressed: () async {
-                              context.pushNamed('teste');
+                              context.pushNamed('cadastroProduto');
                             },
                           ),
                         ),
@@ -206,11 +207,9 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                                                 borderWidth: 1.0,
                                                 buttonSize: 40.0,
                                                 fillColor: const Color(0x00FFFFFF),
-                                                icon: Icon(
+                                                icon: const Icon(
                                                   Icons.circle_outlined,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
+                                                  color: Colors.white,
                                                   size: 18.0,
                                                 ),
                                                 onPressed: () async {
@@ -319,12 +318,10 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                                                 borderWidth: 1.0,
                                                 buttonSize: 40.0,
                                                 fillColor: const Color(0x00FFFFFF),
-                                                icon: FaIcon(
+                                                icon: const FaIcon(
                                                   FontAwesomeIcons
                                                       .solidCheckCircle,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
+                                                  color: Colors.white,
                                                   size: 18.0,
                                                 ),
                                                 onPressed: () async {
@@ -415,10 +412,9 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
                                     },
                                   ).then((value) => setState(() {}));
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.add_shopping_cart_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                  color: Colors.white,
                                   size: 50.0,
                                 ),
                               ),

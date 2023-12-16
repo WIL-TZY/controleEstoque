@@ -8,25 +8,25 @@ import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'teste_model.dart';
-export 'teste_model.dart';
+import 'cadastro_produto_model.dart';
+export 'cadastro_produto_model.dart';
 
-class TesteWidget extends StatefulWidget {
-  const TesteWidget({super.key});
+class CadastroProdutoWidget extends StatefulWidget {
+  const CadastroProdutoWidget({super.key});
 
   @override
-  _TesteWidgetState createState() => _TesteWidgetState();
+  _CadastroProdutoWidgetState createState() => _CadastroProdutoWidgetState();
 }
 
-class _TesteWidgetState extends State<TesteWidget> {
-  late TesteModel _model;
+class _CadastroProdutoWidgetState extends State<CadastroProdutoWidget> {
+  late CadastroProdutoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TesteModel());
+    _model = createModel(context, () => CadastroProdutoModel());
   }
 
   @override
@@ -64,7 +64,7 @@ class _TesteWidgetState extends State<TesteWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'PRODUTOS',
+                'Produtos',
                 style: FlutterFlowTheme.of(context).headlineSmall.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
@@ -99,10 +99,23 @@ class _TesteWidgetState extends State<TesteWidget> {
         ),
         body: Stack(
           children: [
+            Container(
+              width: 1500.0,
+              height: 1300.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset(
+                    'assets/images/overlay.png',
+                  ).image,
+                ),
+              ),
+            ),
             Align(
-              alignment: const AlignmentDirectional(0.00, 0.00),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
@@ -117,55 +130,34 @@ class _TesteWidgetState extends State<TesteWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 0.0, 0.0),
                             child: Text(
-                              'Nome dos produtos',
+                              'ESTOQUE INICIAL',
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
                                     fontFamily: 'Plus Jakarta Sans',
-                                    color: const Color(0xFF57636C),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              2.0, 12.0, 0.0, 0.0),
-                          child: Text(
-                            'Em estoque?',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: const Color(0xFF14181B),
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.954,
                       height: MediaQuery.sizeOf(context).height * 0.531,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        color: const Color(0x4D000000),
                         borderRadius: BorderRadius.circular(20.0),
                         shape: BoxShape.rectangle,
                       ),
                       child: StreamBuilder<List<ProdutosRecord>>(
-                        stream: queryProdutosRecord(
-                          queryBuilder: (produtosRecord) =>
-                              produtosRecord.where(
-                            'emestoque',
-                            isEqualTo: false,
-                          ),
-                        ),
+                        stream: queryProdutosRecord(),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -181,19 +173,16 @@ class _TesteWidgetState extends State<TesteWidget> {
                               ),
                             );
                           }
-                          List<ProdutosRecord>
-                              listviewSemEstoqueProdutosRecordList =
+                          List<ProdutosRecord> lvProdutosRecordList =
                               snapshot.data!;
                           return ListView.builder(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
-                            itemCount:
-                                listviewSemEstoqueProdutosRecordList.length,
-                            itemBuilder: (context, listviewSemEstoqueIndex) {
-                              final listviewSemEstoqueProdutosRecord =
-                                  listviewSemEstoqueProdutosRecordList[
-                                      listviewSemEstoqueIndex];
+                            itemCount: lvProdutosRecordList.length,
+                            itemBuilder: (context, lvIndex) {
+                              final lvProdutosRecord =
+                                  lvProdutosRecordList[lvIndex];
                               return Container(
                                 width: MediaQuery.sizeOf(context).width * 0.08,
                                 height:
@@ -211,8 +200,7 @@ class _TesteWidgetState extends State<TesteWidget> {
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          listviewSemEstoqueProdutosRecord
-                                              .produto,
+                                          lvProdutosRecord.produto,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -226,10 +214,9 @@ class _TesteWidgetState extends State<TesteWidget> {
                                         flex: 9,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.00, 0.00),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Text(
-                                            listviewSemEstoqueProdutosRecord
-                                                .quantidade
+                                            lvProdutosRecord.quantidade
                                                 .toString(),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -237,81 +224,52 @@ class _TesteWidgetState extends State<TesteWidget> {
                                         ),
                                       ),
                                       Builder(
-                                        builder: (context) => Theme(
-                                          data: ThemeData(
-                                            checkboxTheme: CheckboxThemeData(
-                                              visualDensity:
-                                                  VisualDensity.compact,
-                                              materialTapTargetSize:
-                                                  MaterialTapTargetSize
-                                                      .shrinkWrap,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(4.0),
-                                              ),
-                                            ),
-                                            unselectedWidgetColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryText,
-                                          ),
-                                          child: Checkbox(
-                                            value: _model.checkboxValueMap[
-                                                    listviewSemEstoqueProdutosRecord] ??=
-                                                true,
-                                            onChanged: (newValue) async {
-                                              setState(() => _model
-                                                          .checkboxValueMap[
-                                                      listviewSemEstoqueProdutosRecord] =
-                                                  newValue!);
-                                              if (newValue!) {
-                                                await showAlignedDialog(
-                                                  context: context,
-                                                  isGlobal: true,
-                                                  avoidOverflow: false,
-                                                  targetAnchor:
-                                                      const AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
-                                                  followerAnchor:
-                                                      const AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
-                                                  builder: (dialogContext) {
-                                                    return Material(
-                                                      color: Colors.transparent,
-                                                      child: GestureDetector(
-                                                        onTap: () => _model
-                                                                .unfocusNode
-                                                                .canRequestFocus
-                                                            ? FocusScope.of(
-                                                                    context)
-                                                                .requestFocus(_model
-                                                                    .unfocusNode)
-                                                            : FocusScope.of(
-                                                                    context)
-                                                                .unfocus(),
-                                                        child:
-                                                            EditarProdutoWidget(
-                                                          doctarefa:
-                                                              listviewSemEstoqueProdutosRecord,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                ).then(
-                                                    (value) => setState(() {}));
-                                              }
-                                            },
-                                            activeColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .tertiary,
-                                            checkColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .info,
+                                        builder: (context) => InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await showAlignedDialog(
+                                              context: context,
+                                              isGlobal: true,
+                                              avoidOverflow: false,
+                                              targetAnchor:
+                                                  const AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              followerAnchor:
+                                                  const AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              builder: (dialogContext) {
+                                                return Material(
+                                                  color: Colors.transparent,
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: EditarProdutoWidget(
+                                                      doctarefa:
+                                                          lvProdutosRecord,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.edit_square,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -351,8 +309,7 @@ class _TesteWidgetState extends State<TesteWidget> {
                                                   ) ??
                                                   false;
                                           if (confirmDialogResponse) {
-                                            await listviewSemEstoqueProdutosRecord
-                                                .reference
+                                            await lvProdutosRecord.reference
                                                 .delete();
                                             await showDialog(
                                               context: context,
@@ -373,7 +330,8 @@ class _TesteWidgetState extends State<TesteWidget> {
                                               },
                                             );
 
-                                            context.pushNamed('teste');
+                                            context
+                                                .pushNamed('cadastroProduto');
 
                                             return;
                                           } else {
@@ -386,7 +344,7 @@ class _TesteWidgetState extends State<TesteWidget> {
                                           size: 24.0,
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 55.0)),
+                                    ].divide(const SizedBox(width: 1.0)),
                                   ),
                                 ),
                               );
@@ -400,7 +358,7 @@ class _TesteWidgetState extends State<TesteWidget> {
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(0.00, 0.80),
+              alignment: const AlignmentDirectional(0.0, 0.8),
               child: Container(
                 width: 80.0,
                 height: 80.0,
@@ -445,9 +403,9 @@ class _TesteWidgetState extends State<TesteWidget> {
                         },
                       ).then((value) => setState(() {}));
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.add_shopping_cart_rounded,
-                      color: FlutterFlowTheme.of(context).primaryText,
+                      color: Colors.white,
                       size: 50.0,
                     ),
                   ),

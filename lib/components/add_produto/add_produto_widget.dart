@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -48,9 +47,9 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.00, 0.00),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Container(
           constraints: const BoxConstraints(
             maxWidth: 570.0,
@@ -64,7 +63,7 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -279,8 +278,7 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                         options: FFButtonOptions(
                           width: 120.0,
                           height: 44.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
+                          padding: const EdgeInsets.all(0.0),
                           iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color:
@@ -306,13 +304,6 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          await ProdutosRecord.collection
-                              .doc()
-                              .set(createProdutosRecordData(
-                                produto: _model.textController1.text,
-                                quantidade:
-                                    int.tryParse(_model.textController2.text),
-                              ));
                           Navigator.pop(context);
                         },
                         text: 'Criar produto',
