@@ -13,8 +13,6 @@ class AddProdutoModel extends FlutterFlowModel<AddProdutoWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue;
 
   /// Initialization and disposal methods.
 

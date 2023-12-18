@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -232,37 +233,6 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                         _model.textController2Validator.asValidator(context),
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Theme(
-                      data: ThemeData(
-                        checkboxTheme: CheckboxThemeData(
-                          visualDensity: VisualDensity.compact,
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                        ),
-                        unselectedWidgetColor:
-                            FlutterFlowTheme.of(context).secondaryText,
-                      ),
-                      child: Checkbox(
-                        value: _model.checkboxValue ??= true,
-                        onChanged: (newValue) async {
-                          setState(() => _model.checkboxValue = newValue!);
-                        },
-                        activeColor: FlutterFlowTheme.of(context).primary,
-                        checkColor: FlutterFlowTheme.of(context).info,
-                      ),
-                    ),
-                    Text(
-                      'Em estoque?',
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                  ],
-                ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Row(
@@ -304,7 +274,13 @@ class _AddProdutoWidgetState extends State<AddProdutoWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          Navigator.pop(context);
+                          await ProdutosRecord.collection
+                              .doc()
+                              .set(createProdutosRecordData(
+                                produto: _model.textController1.text,
+                                quantidade:
+                                    int.tryParse(_model.textController2.text),
+                              ));
                         },
                         text: 'Criar produto',
                         options: FFButtonOptions(

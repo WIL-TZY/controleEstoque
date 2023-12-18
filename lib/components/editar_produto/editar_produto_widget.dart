@@ -76,7 +76,7 @@ class _EditarProdutoWidgetState extends State<EditarProdutoWidget> {
         child: Container(
           constraints: const BoxConstraints(
             maxWidth: 570.0,
-            maxHeight: double.infinity,
+            maxHeight: 430.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -202,7 +202,14 @@ class _EditarProdutoWidgetState extends State<EditarProdutoWidget> {
                   child: TextFormField(
                     controller: _model.textController2,
                     focusNode: _model.textFieldFocusNode2,
-                    onFieldSubmitted: (_) async {},
+                    onFieldSubmitted: (_) async {
+                      setState(() {
+                        _model.letSaidas = valueOrDefault<int>(
+                          _model.letSaidas,
+                          2,
+                        );
+                      });
+                    },
                     autofocus: true,
                     textCapitalization: TextCapitalization.none,
                     obscureText: false,
@@ -258,52 +265,6 @@ class _EditarProdutoWidgetState extends State<EditarProdutoWidget> {
                     keyboardType: TextInputType.number,
                     validator:
                         _model.textController2Validator.asValidator(context),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () async {
-                          await widget.doctarefa!.reference
-                              .update(createProdutosRecordData(
-                            quantidade:
-                                int.tryParse(_model.textController1.text),
-                          ));
-
-                          await widget.doctarefa!.reference
-                              .update(createProdutosRecordData());
-                        },
-                        text: 'Editar  produto',
-                        options: FFButtonOptions(
-                          width: 150.0,
-                          height: 44.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: const Color(0xFFF2BF19),
-                          textStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(100.0),
-                          hoverColor: const Color(0xFF2B16ED),
-                          hoverTextColor: Colors.white,
-                        ),
-                      ),
-                    ],
                   ),
                 ),
                 Padding(
@@ -366,6 +327,49 @@ class _EditarProdutoWidgetState extends State<EditarProdutoWidget> {
                     keyboardType: TextInputType.number,
                     validator:
                         _model.textController3Validator.asValidator(context),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await widget.doctarefa!.reference
+                              .update(createProdutosRecordData(
+                            quantidade:
+                                int.tryParse(_model.textController1.text),
+                          ));
+                        },
+                        text: 'Editar  produto',
+                        options: FFButtonOptions(
+                          width: 150.0,
+                          height: 44.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: const Color(0xFFF2BF19),
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(100.0),
+                          hoverColor: const Color(0xFF2B16ED),
+                          hoverTextColor: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

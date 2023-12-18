@@ -80,7 +80,9 @@ class _ListaVaziaWidgetState extends State<ListaVaziaWidget> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
             child: FFButtonWidget(
-              onPressed: () async {},
+              onPressed: () {
+                print('Button pressed ...');
+              },
               text: 'Criar Produto',
               options: FFButtonOptions(
                 width: 170.0,

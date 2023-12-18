@@ -74,13 +74,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const ProdutosWidget() : const LoginWidget(),
+          appStateNotifier.loggedIn ? const DashboardWidget() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const ProdutosWidget() : const LoginWidget(),
+              appStateNotifier.loggedIn ? const DashboardWidget() : const LoginWidget(),
         ),
         FFRoute(
           name: 'cadastro',
@@ -93,14 +93,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
-          name: 'produtos',
-          path: '/produtos',
-          builder: (context, params) => const ProdutosWidget(),
+          name: 'dashboard',
+          path: '/dashboard',
+          builder: (context, params) => const DashboardWidget(),
         ),
         FFRoute(
           name: 'cadastroProduto',
           path: '/cadastroProduto',
           builder: (context, params) => const CadastroProdutoWidget(),
+        ),
+        FFRoute(
+          name: 'visualizarTabela',
+          path: '/visualizarTabela',
+          builder: (context, params) => const VisualizarTabelaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

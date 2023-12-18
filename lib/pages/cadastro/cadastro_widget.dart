@@ -153,7 +153,36 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                         controller:
                                             _model.emailAddressController,
                                         focusNode: _model.emailAddressFocusNode,
-                                        onFieldSubmitted: (_) async {},
+                                        onFieldSubmitted: (_) async {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          if (_model.passwordController.text !=
+                                              _model.passwordConfirmController
+                                                  .text) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'Passwords don\'t match!',
+                                                ),
+                                              ),
+                                            );
+                                            return;
+                                          }
+
+                                          final user = await authManager
+                                              .createAccountWithEmail(
+                                            context,
+                                            _model.emailAddressController.text,
+                                            _model.passwordController.text,
+                                          );
+                                          if (user == null) {
+                                            return;
+                                          }
+
+                                          context.goNamedAuth(
+                                              'dashboard', context.mounted);
+                                        },
                                         autofocus: true,
                                         autofillHints: const [AutofillHints.email],
                                         obscureText: false,
@@ -431,7 +460,7 @@ class _CadastroWidgetState extends State<CadastroWidget> {
                                         }
 
                                         context.goNamedAuth(
-                                            'produtos', context.mounted);
+                                            'dashboard', context.mounted);
                                       },
                                       text: 'Criar conta',
                                       options: FFButtonOptions(
