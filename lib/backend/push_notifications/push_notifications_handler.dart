@@ -108,8 +108,9 @@ final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'cadastro': ParameterData.none(),
   'login': ParameterData.none(),
-  'produtos': ParameterData.none(),
+  'dashboard': ParameterData.none(),
   'cadastroProduto': ParameterData.none(),
+  'visualizarTabela': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {
